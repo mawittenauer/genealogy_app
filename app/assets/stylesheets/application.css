@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+ /* app/assets/stylesheets/home.css */
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+div {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn-primary { background-color: #007BFF; }
+.btn-secondary { background-color: #6C757D; }
+.btn-success { background-color: #28A745; }
+
