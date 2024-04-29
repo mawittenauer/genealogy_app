@@ -1,0 +1,13 @@
+<h1><%= @family_tree.name %></h1>
+<p><%= @family_tree.description %></p>
+
+<h2>People in This Family Tree</h2>
+<% if @people.any? %>
+  <ul>
+    <% @people.each do |person| %>
+      <li><%= person.first_name %> <%= person.last_name %>, born <%= person.date_of_birth %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No people have been added to this family tree yet.</p>
+<% end %>

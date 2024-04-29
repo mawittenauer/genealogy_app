@@ -19,7 +19,7 @@
 <% if @family_trees.any? %>
   <ul>
     <% @family_trees.each do |tree| %>
-      <li><%= tree.name %> - <%= tree.description %></li>
+      <li><%= link_to tree.name, family_tree_path(tree) %> - <%= tree.description %></li>
     <% end %>
   </ul>
 <% else %>

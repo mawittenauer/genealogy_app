@@ -33,11 +33,7 @@ div {
   border-radius: 5px;
 }
 
-.subheading {
-  text-align: center;
-}
-
-.form {
+.subheading, .form, p {
   text-align: center;
 }
 
