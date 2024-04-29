@@ -1,17 +1,17 @@
 <h1>Dashboard</h1>
 <p class="subheading">This is your dashboard!</p>
 <h2>Create a New Family Tree</h2>
-<div class="form">
+<div class="w-50 mx-auto">
   <%= form_with model: @family_tree, local: true do |form| %>
-    <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
     </div>
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description %>
+    <div class="mb-3">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control" %>
     </div>
-    <%= form.submit "Create Family Tree" %>
+    <%= form.submit "Create Family Tree", class: "btn btn-primary" %>
   <% end %>
 </div>
 
