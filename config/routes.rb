@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
-  resources :family_trees, only: [:create, :show] do
-    resources :people, only: [:create]
+  resources :family_trees, only: [:create, :show, :destroy] do
+    resources :people, only: [:create, :destroy]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

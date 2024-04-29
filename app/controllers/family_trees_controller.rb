@@ -1,6 +1,6 @@
 class FamilyTreesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_family_tree, only: [:show]
+  before_action :set_family_tree, only: [:show, :destroy]
 
   def create
     @family_tree = FamilyTree.new(family_tree_params)
@@ -15,6 +15,11 @@ class FamilyTreesController < ApplicationController
 
   def show
     @people = @family_tree.people
+  end
+
+  def destroy
+    @family_tree.destroy
+    redirect_to dashboard_path, notice: 'Family tree was successfully destroyed'
   end
 
   private
