@@ -4,5 +4,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @family_tree = FamilyTree.new
+    @family_trees = current_user.family_trees
   end
 end

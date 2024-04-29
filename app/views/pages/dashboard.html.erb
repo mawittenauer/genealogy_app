@@ -1,2 +1,27 @@
 <h1>Dashboard</h1>
 <p class="subheading">This is your dashboard!</p>
+<h2>Create a New Family Tree</h2>
+<div class="form">
+  <%= form_with model: @family_tree, local: true do |form| %>
+    <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+    <%= form.submit "Create Family Tree" %>
+  <% end %>
+</div>
+
+<h2>Your Family Trees</h2>
+<% if @family_trees.any? %>
+  <ul>
+    <% @family_trees.each do |tree| %>
+      <li><%= tree.name %> - <%= tree.description %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="subheading">You have not created any family trees yet.</p>
+<% end %>

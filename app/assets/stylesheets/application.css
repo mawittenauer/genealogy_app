@@ -15,7 +15,7 @@
  */
 
  /* app/assets/stylesheets/home.css */
-h1 {
+h1, h2 {
   color: #333;
   text-align: center;
 }
@@ -34,6 +34,15 @@ div {
 }
 
 .subheading {
+  text-align: center;
+}
+
+.form {
+  text-align: center;
+}
+
+li {
+  list-style: none;
   text-align: center;
 }
 
