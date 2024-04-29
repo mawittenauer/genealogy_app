@@ -20,6 +20,10 @@ h1, h2 {
   text-align: center;
 }
 
+.container {
+  padding-top: 20px;
+}
+
 div {
   text-align: center;
 }

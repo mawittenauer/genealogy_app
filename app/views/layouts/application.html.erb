@@ -15,11 +15,20 @@
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <%= link_to "Genealogy App", root_path, class: "navbar-brand" %>
+        <% if user_signed_in? %>
+          <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
+        <% end %>
       </div>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <% if notice %>
+      <div class="alert alert-info"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-warning"><%= alert %></div>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
