@@ -1,0 +1,34 @@
+<h1><%= @family_tree.name %></h1>
+<p><%= @family_tree.description %></p>
+
+<div class="w-50 mx-auto">
+  <%= form_with(model: [@family_tree, @family_tree.people.build], local: true) do |form| %>
+    <h3>Add a New Person to the Family Tree</h3>
+    <div class="mb-3">
+      <%= form.label :first_name, class: "form-label"  %>
+      <%= form.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :last_name, class: "form-label"  %>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :date_of_birth, class: "form-label"  %>
+      <%= form.date_field :date_of_birth, class: "form-control" %>
+    </div>
+    <%= form.submit "Add Person", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<h2>People in This Family Tree</h2>
+<% if @people.any? %>
+  <ul>
+    <% @people.each do |person| %>
+      <% if person.first_name %>
+        <li><%= person.first_name %> <%= person.last_name %>, born <%= person.date_of_birth %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No people have been added to this family tree yet.</p>
+<% end %>
