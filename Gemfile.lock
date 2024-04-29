@@ -83,6 +83,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    bootstrap-rubygem (9001.0)
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -261,6 +262,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap-rubygem
   capybara
   debug
   devise
