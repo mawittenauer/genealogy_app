@@ -19,7 +19,10 @@
 <% if @family_trees.any? %>
   <ul>
     <% @family_trees.each do |tree| %>
-      <li><%= link_to tree.name, family_tree_path(tree) %> - <%= tree.description %></li>
+      <li>
+        <%= link_to tree.name, family_tree_path(tree) %> - <%= tree.description %>
+        <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
     <% end %>
   </ul>
 <% else %>
