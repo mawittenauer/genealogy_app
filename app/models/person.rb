@@ -15,4 +15,8 @@ class Person < ApplicationRecord
    def related_people
      Person.where(id: relationships.pluck(:person_one_id, :person_two_id).flatten.uniq - [self.id])
    end
+
+   def full_name
+    "#{first_name} #{last_name}"
+   end
 end

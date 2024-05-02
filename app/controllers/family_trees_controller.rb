@@ -15,6 +15,7 @@ class FamilyTreesController < ApplicationController
 
   def show
     @people = @family_tree.people
+    @relationship = Relationship.new
   end
 
   def destroy
