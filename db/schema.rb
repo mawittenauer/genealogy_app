@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_29_130801) do
-  create_table "children_parents", id: false, force: :cascade do |t|
-    t.integer "parent_id", null: false
-    t.integer "child_id", null: false
-    t.index ["child_id"], name: "index_children_parents_on_child_id"
-    t.index ["parent_id"], name: "index_children_parents_on_parent_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_002329) do
   create_table "family_trees", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -36,6 +29,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_130801) do
     t.datetime "updated_at", null: false
     t.integer "family_tree_id", null: false
     t.index ["family_tree_id"], name: "index_people_on_family_tree_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "person_one_id"
+    t.integer "person_two_id"
+    t.string "relationship_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
