@@ -45,7 +45,7 @@
     <% @people.each do |person| %>
       <% if person.first_name %>
         <li>
-          <%= person.first_name %> <%= person.last_name %>, born <%= person.date_of_birth %>
+        <%= link_to person.full_name, family_tree_person_path(@family_tree, person) %>
           <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
       <% end %>
