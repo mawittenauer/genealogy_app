@@ -21,7 +21,7 @@
         <%= form.submit "Add Person", class: "btn btn-primary" %>
       <% end %>
     </div>
-
+    <br /><br />
     <div class="mx-auto">
       <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
         <h3>Add New Relationship</h3>
@@ -44,16 +44,16 @@
   <div class="col-sm">
     <h2>People in This Family Tree</h2>
     <% if @people.any? %>
-      <ul>
-        <% @people.each do |person| %>
-          <% if person.first_name %>
-            <li>
+      <% @people.each do |person| %>
+        <% if person.first_name %>
+        <div class="card" style="width: 18rem; margin-bottom: 10px;">
+          <div class="card-body">
             <%= link_to person.full_name, family_tree_person_path(@family_tree, person) %>
-              <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
-            </li>
-          <% end %>
+            <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
         <% end %>
-      </ul>
+      <% end %>
     <% else %>
       <p>No people have been added to this family tree yet.</p>
     <% end %>

@@ -21,7 +21,7 @@
     <h2>Your Family Trees</h2>
     <% if @family_trees.any? %>
       <% @family_trees.each do |tree| %>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem; margin-bottom: 10px;">
           <div class="card-body">
             <h5 class="card-title"><%= tree.name %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= tree.description %></h6>
