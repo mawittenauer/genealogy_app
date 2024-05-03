@@ -1,14 +1,19 @@
-<h1><%= @person.full_name %></h1>
-<p>Date of Birth: <%= @person.date_of_birth %></p>
-
-<h2>Relationships</h2>
-<% if @relationships.any? %>
-  <ul>
-    <% @relationships.each do |relationship| %>
-      <% related_person = (relationship.person_one == @person) ? relationship.person_two : relationship.person_one %>
-      <li><%= related_person.full_name %> - <%= relationship.relationship_type %></li>
+<div class="row">
+  <div class="col-sm">
+    <h1><%= @person.full_name %></h1>
+    <p>Date of Birth: <%= @person.date_of_birth %></p>
+  </div>
+  <div class="col-sm">
+    <h2>Relationships</h2>
+    <% if @relationships.any? %>
+      <ul>
+        <% @relationships.each do |relationship| %>
+          <% related_person = (relationship.person_one == @person) ? relationship.person_two : relationship.person_one %>
+          <li><%= related_person.full_name %> - <%= relationship.relationship_type %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>This person has no recorded relationships.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>This person has no recorded relationships.</p>
-<% end %>
+  </div>
+</div>
