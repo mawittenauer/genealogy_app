@@ -20,14 +20,16 @@
   <div class="col-sm">
     <h2>Your Family Trees</h2>
     <% if @family_trees.any? %>
-      <ul>
-        <% @family_trees.each do |tree| %>
-          <li>
-            <%= link_to tree.name, family_tree_path(tree) %> - <%= tree.description %>
-            <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </li>
-        <% end %>
-      </ul>
+      <% @family_trees.each do |tree| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= tree.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= tree.description %></h6>
+            <%= link_to "View", family_tree_path(tree), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+          </div>
+        </div>
+      <% end %>
     <% else %>
       <p class="subheading">You have not created any family trees yet.</p>
     <% end %>
