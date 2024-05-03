@@ -17,15 +17,10 @@
  /* app/assets/stylesheets/home.css */
 h1, h2 {
   color: #333;
-  text-align: center;
 }
 
 .container {
   padding-top: 20px;
-}
-
-div {
-  text-align: center;
 }
 
 .btn {
@@ -36,12 +31,12 @@ div {
   border-radius: 5px;
 }
 
-.subheading, p {
+li {
+  list-style: none;
   text-align: center;
 }
 
-li {
-  list-style: none;
+.home-hero {
   text-align: center;
 }
 
