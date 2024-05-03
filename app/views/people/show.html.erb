@@ -6,12 +6,14 @@
   <div class="col-sm">
     <h2>Relationships</h2>
     <% if @relationships.any? %>
-      <ul>
-        <% @relationships.each do |relationship| %>
-          <% related_person = (relationship.person_one == @person) ? relationship.person_two : relationship.person_one %>
-          <li><%= related_person.full_name %> - <%= relationship.relationship_type %></li>
-        <% end %>
-      </ul>
+      <% @relationships.each do |relationship| %>
+        <% related_person = (relationship.person_one == @person) ? relationship.person_two : relationship.person_one %>
+        <div class="card" style="width: 18rem; margin-bottom: 10px;">
+          <div class="card-body">
+            <%= related_person.full_name %> - <%= relationship.relationship_type %></li>
+          </div>
+        </div>
+      <% end %>
     <% else %>
       <p>This person has no recorded relationships.</p>
     <% end %>
