@@ -1,56 +1,61 @@
-<h1><%= @family_tree.name %></h1>
-<p><%= @family_tree.description %></p>
+<div class="row">
+  <div class="col-sm">
+    <h1><%= @family_tree.name %></h1>
+    <p><%= @family_tree.description %></p>
 
-<div class="w-50 mx-auto">
-  <%= form_with(model: [@family_tree, @family_tree.people.build], local: true) do |form| %>
-    <h3>Add a New Person to the Family Tree</h3>
-    <div class="mb-3">
-      <%= form.label :first_name, class: "form-label"  %>
-      <%= form.text_field :first_name, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :last_name, class: "form-label"  %>
-      <%= form.text_field :last_name, class: "form-control" %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :date_of_birth, class: "form-label"  %>
-      <%= form.date_field :date_of_birth, class: "form-control" %>
-    </div>
-    <%= form.submit "Add Person", class: "btn btn-primary" %>
-  <% end %>
-</div>
-
-<div class="w-50 mx-auto">
-  <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
-    <h3>Add New Relationship</h3>
-    <div class="mb-3">
-      <%= form.label :person_one_id, "Person 1", class: "form-label" %>
-      <%= form.collection_select :person_one_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :person_two_id, "Person 2", class: "form-label" %>
-      <%= form.collection_select :person_two_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
-    </div>
-    <div class="mb-3">
-      <%= form.label :relationship_type, "Type of Relationship", class: "form-label" %>
-      <%= form.select :relationship_type, Relationship::RELATIONSHIP_TYPES, {include_blank: true}, {class: 'form-control'} %>
-    </div>
-    <%= form.submit "Create Relationship", class: "btn btn-primary" %>
-  <% end %>
-</div>
-
-<h2>People in This Family Tree</h2>
-<% if @people.any? %>
-  <ul>
-    <% @people.each do |person| %>
-      <% if person.first_name %>
-        <li>
-        <%= link_to person.full_name, family_tree_person_path(@family_tree, person) %>
-          <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
+    <div class="mx-auto">
+      <%= form_with(model: [@family_tree, @family_tree.people.build], local: true) do |form| %>
+        <h3>Add a New Person to the Family Tree</h3>
+        <div class="mb-3">
+          <%= form.label :first_name, class: "form-label"  %>
+          <%= form.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :last_name, class: "form-label"  %>
+          <%= form.text_field :last_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :date_of_birth, class: "form-label"  %>
+          <%= form.date_field :date_of_birth, class: "form-control" %>
+        </div>
+        <%= form.submit "Add Person", class: "btn btn-primary" %>
       <% end %>
+    </div>
+
+    <div class="mx-auto">
+      <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
+        <h3>Add New Relationship</h3>
+        <div class="mb-3">
+          <%= form.label :person_one_id, "Person 1", class: "form-label" %>
+          <%= form.collection_select :person_one_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :person_two_id, "Person 2", class: "form-label" %>
+          <%= form.collection_select :person_two_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :relationship_type, "Type of Relationship", class: "form-label" %>
+          <%= form.select :relationship_type, Relationship::RELATIONSHIP_TYPES, {include_blank: true}, {class: 'form-control'} %>
+        </div>
+        <%= form.submit "Create Relationship", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm">
+    <h2>People in This Family Tree</h2>
+    <% if @people.any? %>
+      <ul>
+        <% @people.each do |person| %>
+          <% if person.first_name %>
+            <li>
+            <%= link_to person.full_name, family_tree_person_path(@family_tree, person) %>
+              <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No people have been added to this family tree yet.</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No people have been added to this family tree yet.</p>
-<% end %>
+  </div>
+</div>
