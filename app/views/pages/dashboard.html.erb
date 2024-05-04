@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm">
     <h1>Dashboard</h1>
-    <p class="subheading">This is your dashboard! This is where you can find all of your existing family trees and creater new ones.</p>
+    <p class="subheading">This is your dashboard! This is where you can find all of your existing family trees and create new ones.</p>
     <h2>Create a New Family Tree</h2>
     <div class="mx-auto">
       <%= form_with model: @family_tree, local: true do |form| %>
@@ -13,7 +13,7 @@
           <%= form.label :description, class: "form-label" %>
           <%= form.text_area :description, class: "form-control" %>
         </div>
-        <%= form.submit "Create Family Tree", class: "btn btn-primary" %>
+        <%= form.submit "Create Family Tree", class: "btn btn-primary btn-sm" %>
       <% end %>
     </div>
   </div>
@@ -25,8 +25,8 @@
           <div class="card-body">
             <h5 class="card-title"><%= tree.name %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= tree.description %></h6>
-            <%= link_to "View", family_tree_path(tree), class: "btn btn-primary btn-sm" %>
-            <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            <%= link_to "View", family_tree_path(tree) %>
+            <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
       <% end %>

@@ -18,7 +18,7 @@
           <%= form.label :date_of_birth, class: "form-label"  %>
           <%= form.date_field :date_of_birth, class: "form-control" %>
         </div>
-        <%= form.submit "Add Person", class: "btn btn-primary" %>
+        <%= form.submit "Add Person", class: "btn btn-primary btn-sm" %>
       <% end %>
     </div>
     <br /><br />
@@ -37,7 +37,7 @@
           <%= form.label :relationship_type, "Type of Relationship", class: "form-label" %>
           <%= form.select :relationship_type, Relationship::RELATIONSHIP_TYPES, {include_blank: true}, {class: 'form-control'} %>
         </div>
-        <%= form.submit "Create Relationship", class: "btn btn-primary" %>
+        <%= form.submit "Create Relationship", class: "btn btn-primary btn-sm" %>
       <% end %>
     </div>
   </div>
