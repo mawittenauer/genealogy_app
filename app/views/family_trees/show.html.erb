@@ -48,8 +48,10 @@
         <% if person.first_name %>
         <div class="card" style="width: 18rem; margin-bottom: 10px;">
           <div class="card-body">
-            <%= link_to person.full_name, family_tree_person_path(@family_tree, person) %>
-            <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <h5 class="card-title"><%= person.full_name %></h5>
+            <p class="card-text"><%= person.date_of_birth %> - <%= person.date_of_death %></p>
+            <%= link_to "View", family_tree_person_path(@family_tree, person) %>
+            <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>       
           </div>
         </div>
         <% end %>
