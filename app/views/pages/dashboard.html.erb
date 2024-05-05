@@ -24,9 +24,12 @@
         <div class="card" style="width: 18rem; margin-bottom: 10px;">
           <div class="card-body">
             <h5 class="card-title"><%= tree.name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= tree.description %></h6>
+            <p class="card-text"><%= tree.description %></p>
             <%= link_to "View", family_tree_path(tree) %>
             <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          <div class="card-footer text-muted">
+            Member Count: <%= tree.member_count %>
           </div>
         </div>
       <% end %>
