@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_002329) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_06_114632) do
   create_table "family_trees", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -28,6 +28,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_002329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "family_tree_id", null: false
+    t.string "nickname"
+    t.string "birthplace"
+    t.text "bio"
     t.index ["family_tree_id"], name: "index_people_on_family_tree_id"
   end
 
