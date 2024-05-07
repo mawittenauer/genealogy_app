@@ -1,24 +1,19 @@
-# README
+# Genealogy App
+Genealogy App allows users to create and manage their family trees, explore relationships, and collaborate with family members to enrich their family history.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+To install clone this repository to the machine where you want to run the web interface and run the following commands:
 
-Things you may want to cover:
+```
+git clone https://github.com/mawittenauer/genealogy_app.git
+cd genealogy-app
 
-* Ruby version
+bundle install
+```
 
-* System dependencies
+Setup database
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails db:create
+rails db:migrate
+```
