@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_family_tree
-  before_action :set_person, only: [:destroy, :show]
+  before_action :set_person, only: [:destroy, :show, :edit, :update]
 
   def show
     @relationships = @person.relationships
@@ -19,6 +19,17 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     redirect_to family_tree_path(@family_tree), notice: 'Person was successfully deleted.'
+  end
+
+  def edit
+  end
+
+  def update
+    if @person.update(person_params)
+      redirect_to family_tree_person_path(@family_tree, @person), notice: 'Person was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   private
