@@ -5,6 +5,7 @@
     <p><strong>Nickname:</strong> <%= @person.nickname %></p>
     <p><strong>Birthplace:</strong> <%= @person.birthplace %></p>
     <p><strong>Bio:</strong> <%= @person.bio %></p>
+    <%= link_to 'Edit', edit_family_tree_person_path(@family_tree, @person) %>
   </div>
   <div class="col-sm">
     <h2>Relationships</h2>
