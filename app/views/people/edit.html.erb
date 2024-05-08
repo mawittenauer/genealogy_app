@@ -26,5 +26,6 @@
       <%= form.text_area :bio, class: "form-control" %>
     </div>
     <%= form.submit "Update Person", class: "btn btn-primary btn-sm" %>
+    <%= link_to "Cancel", family_tree_person_path(@family_tree, @person) %>
   <% end %>
 </div>
