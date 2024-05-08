@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-sm">
     <h1><%= @family_tree.name %></h1>
-    <p><%= @family_tree.description %></p>
+    <p>
+      <%= @family_tree.description %><br />
+      <%= link_to 'Edit', edit_family_tree_path(@family_tree) %>
+    </p>
 
     <div class="mx-auto">
       <%= form_with(model: [@family_tree, @family_tree.people.build], local: true) do |form| %>

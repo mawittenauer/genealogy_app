@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
-  resources :family_trees, only: [:create, :show, :destroy] do
+  resources :family_trees, only: [:create, :show, :edit, :update, :destroy] do
     resources :people
   end
   resources :relationships, only: [:create, :destroy]
