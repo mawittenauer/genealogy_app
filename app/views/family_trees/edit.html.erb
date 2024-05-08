@@ -10,5 +10,6 @@
       <%= form.text_area :description, class: "form-control" %>
     </div>
     <%= form.submit "Update Family Tree", class: "btn btn-primary btn-sm" %>
+    <%= link_to "Cancel", family_tree_path(@family_tree) %>
   <% end %>
 </div>
