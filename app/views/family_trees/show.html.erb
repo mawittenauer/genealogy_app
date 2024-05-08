@@ -1,4 +1,10 @@
 <div class="row gx-5">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<%= dashboard_path %>">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @family_tree.name %></li>
+    </ol>
+  </nav>
   <div class="col-sm">
     <h1><%= @family_tree.name %></h1>
     <p>
