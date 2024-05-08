@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row gx-5">
   <div class="col-sm">
     <h1>Dashboard</h1>
     <p class="subheading">This is your dashboard! This is where you can find all of your existing family trees and create new ones.</p>
@@ -21,7 +21,7 @@
     <h2>Your Family Trees</h2>
     <% if @family_trees.any? %>
       <% @family_trees.each do |tree| %>
-        <div class="card" style="width: 18rem; margin-bottom: 10px;">
+        <div class="card" style="margin-bottom: 10px;">
           <div class="card-body">
             <h5 class="card-title"><%= tree.name %></h5>
             <p class="card-text"><%= tree.description %></p>
