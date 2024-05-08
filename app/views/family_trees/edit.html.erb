@@ -1,0 +1,14 @@
+<div class="mx-auto">
+  <%= form_with(model: @family_tree, local: true) do |form| %>
+    <h3>Edit Family Tree</h3>
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <%= form.submit "Update Family Tree", class: "btn btn-primary btn-sm" %>
+  <% end %>
+</div>

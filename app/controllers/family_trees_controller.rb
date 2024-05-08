@@ -1,6 +1,6 @@
 class FamilyTreesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_family_tree, only: [:show, :destroy]
+  before_action :set_family_tree, only: [:show, :edit, :update, :destroy]
 
   def create
     @family_tree = FamilyTree.new(family_tree_params)
@@ -16,6 +16,17 @@ class FamilyTreesController < ApplicationController
   def show
     @people = @family_tree.people
     @relationship = Relationship.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @family_tree.update(family_tree_params)
+      redirect_to family_tree_path(@family_tree), notice: 'Family tree was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
