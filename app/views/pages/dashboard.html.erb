@@ -29,7 +29,7 @@
             <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
           <div class="card-footer text-muted">
-            Member Count: <%= tree.member_count %>
+            <strong>Member Count:</strong> <%= tree.member_count %>
           </div>
         </div>
       <% end %>
