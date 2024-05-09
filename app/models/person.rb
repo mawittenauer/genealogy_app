@@ -14,11 +14,20 @@ class Person < ApplicationRecord
     Relationship.where("person_one_id = ? OR person_two_id = ?", self.id, self.id)
   end
 
-  def related_people
-    Person.where(id: relationships.pluck(:person_one_id, :person_two_id).flatten.uniq - [self.id])
-  end
-
   def full_name
   "#{first_name} #{last_name}"
+  end
+
+  def relationship_type_for(relationship)
+    if id == relationship.person_one_id
+      case relationship.relationship_type
+      when 'parent'
+        'Child'
+      else
+        relationship.relationship_type.humanize
+      end
+    else
+      relationship.relationship_type.humanize
+    end
   end
 end

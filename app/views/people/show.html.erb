@@ -17,11 +17,18 @@
   <div class="col-sm">
     <h2>Relationships</h2>
     <% if @relationships.any? %>
-      <% @relationships.each do |relationship| %>
-        <% related_person = (relationship.person_one == @person) ? relationship.person_two : relationship.person_one %>
+      <% @person.relationships_as_person_one.each do |relationship| %>
         <div class="card" style="margin-bottom: 10px;">
           <div class="card-body">
-            <%= related_person.full_name %> - <%= relationship.relationship_type %></li>
+          <%= relationship.person_two.full_name %> - <%= @person.relationship_type_for(relationship) %></br>
+            <%= link_to 'Delete', relationship_path(relationship), method: :delete, data: { confirm: 'Are you sure you want to delete this relationship?' } %>
+          </div>
+        </div>
+      <% end %>
+      <% @person.relationships_as_person_two.each do |relationship| %>
+        <div class="card" style="margin-bottom: 10px;">
+          <div class="card-body">
+          <%= relationship.person_one.full_name %> - <%= @person.relationship_type_for(relationship) %></br>
             <%= link_to 'Delete', relationship_path(relationship), method: :delete, data: { confirm: 'Are you sure you want to delete this relationship?' } %>
           </div>
         </div>

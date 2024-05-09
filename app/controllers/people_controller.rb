@@ -4,7 +4,6 @@ class PeopleController < ApplicationController
 
   def show
     @relationships = @person.relationships
-    @related_people = @person.related_people
   end
 
   def create
