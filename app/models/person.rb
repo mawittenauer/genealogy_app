@@ -14,6 +14,16 @@ class Person < ApplicationRecord
     Relationship.where("person_one_id = ? OR person_two_id = ?", self.id, self.id)
   end
 
+  def parents
+    parent_relationships = Relationship.where("person_two_id = ? AND relationship_type = ?", self.id, "parent")
+    parent_relationships.map { |r| r.person_one }
+  end
+
+  def children
+    child_relationships = Relationship.where("person_one_id = ? AND relationship_type = ?", self.id, "parent")
+    child_relationships.map { |r| r.person_two }
+  end
+
   def full_name
   "#{first_name} #{last_name}"
   end
