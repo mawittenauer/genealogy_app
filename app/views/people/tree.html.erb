@@ -1,0 +1,23 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<%= dashboard_path %>">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="<%= family_tree_path(@family_tree) %>"><%= @family_tree.name %></a></li>
+      <li class="breadcrumb-item"><a href="<%= family_tree_person_path(@family_tree, @person) %>"><%= @person.full_name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tree</li>
+    </ol>
+  </nav>
+<div style="width:100%; height:700px;" id="tree"></div>
+<script type="module">
+  import FamilyTree from "familytree";
+  let family = new FamilyTree(document.getElementById("tree"), {
+      nodeBinding: {
+          field_1: "name",
+          field_0: "bio"
+      },
+      nodes: [
+          { id: 1, pids: [2], name: "Amber McKenzie", gender: "female", bio: "Hello, world!" },
+          { id: 2, pids: [1], name: "Ava Field", gender: "male", bio: "Hello, world!" },
+          { id: 3, mid: 1, fid: 2, name: "Peter Stevens", gender: "male", bio: "Hello, world!" }  
+      ]
+  });
+</script>
