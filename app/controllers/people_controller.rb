@@ -2,6 +2,10 @@ class PeopleController < ApplicationController
   before_action :set_family_tree
   before_action :set_person, only: [:destroy, :show, :edit, :update]
 
+  def tree
+    @person = @family_tree.people.find(params[:person_id])
+  end
+
   def show
     @relationships = @person.relationships
   end

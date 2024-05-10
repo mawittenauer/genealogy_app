@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
   resources :family_trees, only: [:create, :show, :edit, :update, :destroy] do
-    resources :people
+    resources :people do
+      get 'tree', to: 'people#tree'
+    end
   end
   resources :relationships, only: [:create, :destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
