@@ -22,6 +22,14 @@ class Person < ApplicationRecord
     parent_relationships.map { |r| r.person_one }
   end
 
+  def mother
+    parents.select { |p| p.gender == 'female' }[0]
+  end
+
+  def father
+    parents.select { |p| p.gender == 'male' }[0]
+  end
+
   def children
     child_relationships = Relationship.where("person_one_id = ? AND relationship_type = ?", self.id, "parent")
     child_relationships.map { |r| r.person_two }
