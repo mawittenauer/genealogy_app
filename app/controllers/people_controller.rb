@@ -6,8 +6,9 @@ class PeopleController < ApplicationController
     @person = @family_tree.people.find(params[:person_id])
     @person_parents = @person.parents
     @data = [
-      { id: @person.id, mid: nil, fid: @person_parents[0].id, name: @person.full_name, gender: @person.gender },
-      { id: @person_parents[0].id, pids: [nil], name: @person_parents[0].full_name }
+      { id: @person.id, mid: @person.mother&.id, fid: @person.father&.id, name: @person.full_name, gender: @person.gender },
+      { id: @person.father&.id, pids: [@person.mother&.id], name: @person.father&.full_name, gender: 'male' },
+      { id: @person.mother&.id, pids: [@person.father&.id], name: @person.mother&.full_name, gender: 'female' }
     ].to_json();
   end
 
