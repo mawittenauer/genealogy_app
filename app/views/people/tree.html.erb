@@ -9,15 +9,11 @@
 <div style="width:100%; height:700px;" id="tree"></div>
 <script type="module">
   import FamilyTree from "familytree";
+  console.log(<%= @data.html_safe %>);
   let family = new FamilyTree(document.getElementById("tree"), {
       nodeBinding: {
-          field_1: "name",
-          field_0: "bio"
+          field_0: "name"
       },
-      nodes: [
-          { id: 1, pids: [2], name: "Amber McKenzie", gender: "female", bio: "Hello, world!" },
-          { id: 2, pids: [1], name: "Ava Field", gender: "male", bio: "Hello, world!" },
-          { id: 3, mid: 1, fid: 2, name: "Peter Stevens", gender: "male", bio: "Hello, world!" }  
-      ]
+      nodes: <%= @data.html_safe %>
   });
 </script>

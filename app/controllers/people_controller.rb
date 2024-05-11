@@ -4,6 +4,11 @@ class PeopleController < ApplicationController
 
   def tree
     @person = @family_tree.people.find(params[:person_id])
+    @person_parents = @person.parents
+    @data = [
+      { id: @person.id, mid: nil, fid: @person_parents[0].id, name: @person.full_name },
+      { id: @person_parents[0].id, pids: [nil], name: @person_parents[0].full_name }
+    ].to_json();
   end
 
   def show
