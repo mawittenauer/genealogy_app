@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
     @person = @family_tree.people.find(params[:person_id])
     @person_parents = @person.parents
     @data = [
-      { id: @person.id, mid: nil, fid: @person_parents[0].id, name: @person.full_name },
+      { id: @person.id, mid: nil, fid: @person_parents[0].id, name: @person.full_name, gender: @person.gender },
       { id: @person_parents[0].id, pids: [nil], name: @person_parents[0].full_name }
     ].to_json();
   end
@@ -54,6 +54,6 @@ class PeopleController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:first_name, :last_name, :date_of_birth, :bio, :nickname, :birthplace)
+    params.require(:person).permit(:first_name, :last_name, :date_of_birth, :bio, :nickname, :birthplace, :gender)
   end
 end

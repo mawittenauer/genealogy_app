@@ -9,6 +9,9 @@ class Person < ApplicationRecord
   has_many :related_people_as_person_two, through: :relationships_as_person_two, source: :person_one
 
   validates :nickname, length: { maximum: 50 }
+  
+  # Validates that the gender is either 'M' or 'F'
+  enum gender: { male: 'M', female: 'F' }
 
   def relationships
     Relationship.where("person_one_id = ? OR person_two_id = ?", self.id, self.id)
@@ -30,7 +33,7 @@ class Person < ApplicationRecord
   end
 
   def full_name
-  "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def relationship_type_for(relationship)
