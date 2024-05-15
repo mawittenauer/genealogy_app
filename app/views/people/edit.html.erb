@@ -1,4 +1,11 @@
 <div class="mx-auto">
+  <% if flash[:errors] %>
+    <div class="error-messages">
+      <% flash[:errors].each do |error| %>
+        <div class="alert alert-warning"><%= error %></div>
+      <% end %>
+    </div>
+  <% end %>
   <%= form_with(model: [@family_tree, @person], local: true) do |form| %>
     <h3>Edit Person</h3>
     <div class="mb-3">
@@ -11,7 +18,7 @@
     </div>
     <div class="mb-3">
       <%= form.label :gender, class: "form-label"  %>
-      <%= form.select :gender, [['Male', 'M'], ['Female', 'F']], {include_blank: true}, {class: 'form-control'} %>
+      <%= form.select :gender, [['Male', 'male'], ['Female', 'female']], {include_blank: true}, {class: 'form-control'} %>
     </div>
     <div class="mb-3">
       <%= form.label :date_of_birth, class: "form-label" %>

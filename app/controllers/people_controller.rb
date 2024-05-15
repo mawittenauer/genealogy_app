@@ -25,15 +25,6 @@ class PeopleController < ApplicationController
     @relationships = @person.relationships
   end
 
-  def create
-    @person = @family_tree.people.new(person_params)
-    if @person.save
-      redirect_to family_tree_path(@family_tree), notice: 'Person was successful added.'
-    else
-      redirect_to family_tree_path(@family_tree), alert: 'Failed to add person.'
-    end
-  end
-
   def destroy
     @person.destroy
     redirect_to family_tree_path(@family_tree), notice: 'Person was successfully deleted.'
@@ -46,7 +37,8 @@ class PeopleController < ApplicationController
     if @person.update(person_params)
       redirect_to family_tree_person_path(@family_tree, @person), notice: 'Person was successfully updated.'
     else
-      render :edit
+      flash[:errors] = @person.errors.full_messages
+      redirect_to edit_family_tree_person_path(@family_tree, @person)
     end
   end
 
