@@ -13,7 +13,14 @@
     </p>
 
     <div class="mx-auto">
-      <%= form_with(model: [@family_tree, @family_tree.people.build], local: true) do |form| %>
+      <% if flash[:errors] %>
+        <div class="error-messages">
+          <% flash[:errors].each do |error| %>
+            <div class="alert alert-warning"><%= error %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= form_with(model: [@family_tree, @family_tree.people.build], url: family_tree_create_person_path(@family_tree), local: true) do |form| %>
         <h3>Add a New Person to the Family Tree</h3>
         <div class="mb-3">
           <%= form.label :first_name, class: "form-label"  %>
@@ -70,7 +77,7 @@
     <h2>People in This Family Tree</h2>
     <% if @people.any? %>
       <% @people.each do |person| %>
-        <% if person.first_name %>
+        <% if person.persisted? %>
         <div class="card" style="margin-bottom: 10px;">
           <div class="card-body">
             <h5 class="card-title"><%= person.full_name %></h5>
