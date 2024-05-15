@@ -8,6 +8,10 @@ class Person < ApplicationRecord
   has_many :related_people_as_person_one, through: :relationships_as_person_one, source: :person_two
   has_many :related_people_as_person_two, through: :relationships_as_person_two, source: :person_one
 
+  validates :first_name, presence: { message: 'is required' }
+  validates :last_name, presence: { message: 'is required' }
+  validates :gender, presence: { message: 'is required' }
+  validates :date_of_birth, presence: { message: 'is required' }
   validates :nickname, length: { maximum: 50 }
   
   # Validates that the gender is either 'M' or 'F'

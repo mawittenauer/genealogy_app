@@ -13,6 +13,18 @@ class FamilyTreesController < ApplicationController
     end
   end
 
+  def create_person
+    @family_tree = FamilyTree.find(params[:family_tree_id])
+    @person = @family_tree.people.build(person_params)
+  
+    if @person.save
+      redirect_to @family_tree, notice: 'Family member was successfully added.'
+    else
+      flash[:errors] = @person.errors.full_messages
+      redirect_to family_tree_path(@family_tree)
+    end
+  end
+
   def show
     @people = @family_tree.people
     @relationship = Relationship.new
@@ -38,6 +50,10 @@ class FamilyTreesController < ApplicationController
 
   def family_tree_params
     params.require(:family_tree).permit(:name, :description)
+  end
+
+  def person_params
+    params.require(:person).permit(:first_name, :last_name, :date_of_birth, :bio, :nickname, :birthplace, :gender)
   end
 
   def set_family_tree
