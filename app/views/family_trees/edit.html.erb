@@ -1,4 +1,11 @@
 <div class="mx-auto">
+  <% if flash[:errors] %>
+    <div class="error-messages">
+      <% flash[:errors].each do |error| %>
+        <div class="alert alert-warning"><%= error %></div>
+      <% end %>
+    </div>
+  <% end %>
   <%= form_with(model: @family_tree, local: true) do |form| %>
     <h3>Edit Family Tree</h3>
     <div class="mb-3">

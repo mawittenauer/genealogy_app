@@ -9,7 +9,8 @@ class FamilyTreesController < ApplicationController
     if @family_tree.save
       redirect_to dashboard_path, notice: 'Family tree was successfully created.'
     else
-      render 'pages/dashboard', status: :unprocessable_entity
+      flash[:errors] = @family_tree.errors.full_messages
+      redirect_to dashboard_path
     end
   end
 
@@ -37,7 +38,8 @@ class FamilyTreesController < ApplicationController
     if @family_tree.update(family_tree_params)
       redirect_to family_tree_path(@family_tree), notice: 'Family tree was successfully updated.'
     else
-      render :edit
+      flash[:errors] = @family_tree.errors.full_messages
+      redirect_to edit_family_tree_path(@family_tree)
     end
   end
 

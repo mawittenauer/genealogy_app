@@ -4,6 +4,13 @@
     <p class="subheading">This is your dashboard! This is where you can find all of your existing family trees and create new ones.</p>
     <h2>Create a New Family Tree</h2>
     <div class="mx-auto">
+      <% if flash[:errors] %>
+        <div class="error-messages">
+          <% flash[:errors].each do |error| %>
+            <div class="alert alert-warning"><%= error %></div>
+          <% end %>
+        </div>
+      <% end %>
       <%= form_with model: @family_tree, local: true do |form| %>
         <div class="mb-3">
         <%= form.label :name, class: "form-label" %>
