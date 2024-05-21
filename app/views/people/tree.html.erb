@@ -12,7 +12,8 @@
   console.log(<%= @data.html_safe %>);
   let family = new FamilyTree(document.getElementById("tree"), {
       nodeBinding: {
-          field_0: "name"
+          field_0: "name",
+          field_1: "date_of_birth",
       },
       nodes: <%= @data.html_safe %>
   });
