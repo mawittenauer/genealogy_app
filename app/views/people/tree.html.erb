@@ -15,6 +15,15 @@
           field_0: "name",
           field_1: "date_of_birth",
       },
+      editForm: { 
+        readOnly: true,
+        elements: [
+          { type: 'textbox', label: 'Name', binding: 'name' },
+          { type: 'date', label: 'Date of Birth', binding: 'date_of_birth' },
+          { type: 'textbox', label: 'Gender', binding: 'gender' },
+          { type: 'textbox', label: 'Bio', binding: 'bio' },
+        ]
+      },
       nodes: <%= @data.html_safe %>
   });
 </script>
