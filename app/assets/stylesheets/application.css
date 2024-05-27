@@ -16,13 +16,26 @@
 
  /* app/assets/stylesheets/home.css */
 
+/*
+Primary Color: Deep Blue (confidence, trust) - #264653
+Secondary Color: Teal (calm, sophisticated) - #2A9D8F
+Accent Color: Coral (energy, call to action) - #E76F51
+Neutral Background: Light Gray - #F4F4F4
+Dark Text: Almost Black - #212529
+*/
+
 * {
   font-family: 'Open Sans';
+  color: #212529;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto Slab';
-  color: #333;
+  color: #212529;
+}
+
+.navbar {
+  background-color: #2A9D8F !important;
 }
 
 .container {
@@ -35,6 +48,11 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   text-decoration: none;
   border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #E76F51 !important;
+  border-color: #E76F51 !important;
 }
 
 li {
