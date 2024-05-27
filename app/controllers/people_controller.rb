@@ -21,6 +21,10 @@ class PeopleController < ApplicationController
     @data = @data.to_json()
   end
 
+  def new
+    @people = @family_tree.people
+  end
+
   def show
     @relationships = @person.relationships
   end

@@ -11,48 +11,7 @@
       <%= @family_tree.description %><br />
       <%= link_to 'Edit', edit_family_tree_path(@family_tree) %>
     </p>
-
-    <div class="mx-auto">
-      <% if flash[:errors] %>
-        <div class="error-messages">
-          <% flash[:errors].each do |error| %>
-            <div class="alert alert-warning"><%= error %></div>
-          <% end %>
-        </div>
-      <% end %>
-      <%= form_with(model: [@family_tree, @family_tree.people.build], url: family_tree_create_person_path(@family_tree), local: true) do |form| %>
-        <h3>Add a New Person to the Family Tree</h3>
-        <div class="mb-3">
-          <%= form.label :first_name, class: "form-label"  %>
-          <%= form.text_field :first_name, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :last_name, class: "form-label"  %>
-          <%= form.text_field :last_name, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :gender, class: "form-label"  %>
-          <%= form.select :gender, [['Male', 'M'], ['Female', 'F']], {include_blank: true}, {class: 'form-control'} %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :date_of_birth, class: "form-label"  %>
-          <%= form.date_field :date_of_birth, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :nickname, class: "form-label"  %>
-          <%= form.text_field :nickname, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :birthplace, class: "form-label"  %>
-          <%= form.text_field :birthplace, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :bio, class: "form-label"  %>
-          <%= form.text_area :bio, class: "form-control" %>
-        </div>
-        <%= form.submit "Add Person", class: "btn btn-primary btn-sm" %>
-      <% end %>
-    </div>
+    <%= link_to 'Add Family Member', new_family_tree_person_path(@family_tree), class: "btn btn-primary" %>
     <br /><br />
     <div class="mx-auto">
       <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
