@@ -16,6 +16,14 @@
 
  /* app/assets/stylesheets/home.css */
 
+/*
+Primary Color: Deep Blue (confidence, trust) - #264653
+Secondary Color: Teal (calm, sophisticated) - #2A9D8F
+Accent Color: Coral (energy, call to action) - #E76F51
+Neutral Background: Light Gray - #F4F4F4
+Dark Text: Almost Black - #212529
+*/
+
 * {
   font-family: 'Open Sans';
   color: #212529;
