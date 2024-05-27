@@ -22,7 +22,7 @@ class FamilyTreesController < ApplicationController
       redirect_to @family_tree, notice: 'Family member was successfully added.'
     else
       flash[:errors] = @person.errors.full_messages
-      redirect_to family_tree_path(@family_tree)
+      redirect_to new_family_tree_person_path(@family_tree)
     end
   end
 
