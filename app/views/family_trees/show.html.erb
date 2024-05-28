@@ -12,25 +12,7 @@
       <%= link_to 'Edit', edit_family_tree_path(@family_tree) %>
     </p>
     <%= link_to 'Add Family Member', new_family_tree_person_path(@family_tree), class: "btn btn-primary" %>
-    <br /><br />
-    <div class="mx-auto">
-      <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
-        <h3>Add New Relationship</h3>
-        <div class="mb-3">
-          <%= form.label :person_one_id, "This family member", class: "form-label" %>
-          <%= form.collection_select :person_one_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :relationship_type, "Is the", class: "form-label" %>
-          <%= form.select :relationship_type, Relationship::RELATIONSHIP_TYPES, {include_blank: true}, {class: 'form-control'} %>
-        </div>
-        <div class="mb-3">
-          <%= form.label :person_two_id, "Of this family member", class: "form-label" %>
-          <%= form.collection_select :person_two_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
-        </div>
-        <%= form.submit "Create Relationship", class: "btn btn-primary btn-sm" %>
-      <% end %>
-    </div>
+    <%= link_to 'Add Relationship', new_family_tree_relationship_path(@family_tree), class: "btn btn-primary" %>
   </div>
   <div class="col-sm">
     <h2>People in This Family Tree</h2>

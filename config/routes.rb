@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :people, only: [:show, :edit, :update, :destroy, :new] do
       get 'tree', to: 'people#tree'
     end
+    resources :relationships, only: [:new]
     post 'people', to: 'family_trees#create_person', as: 'create_person'
   end
   resources :relationships, only: [:create, :destroy]
