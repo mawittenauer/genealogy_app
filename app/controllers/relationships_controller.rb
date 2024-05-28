@@ -1,5 +1,11 @@
 class RelationshipsController < ApplicationController
   before_action :set_relationship, only: [:destroy]
+  before_action :set_family_tree, only: [:new]
+
+  def new
+    @people = @family_tree.people
+    @relationship = Relationship.new
+  end
 
   def create
     @relationship = Relationship.new(relationship_params)
@@ -26,5 +32,12 @@ class RelationshipsController < ApplicationController
 
   def set_relationship
     @relationship = Relationship.find(params[:id])
+  end
+
+  def set_family_tree
+    @family_tree = FamilyTree.find(params[:family_tree_id])
+    unless @family_tree.user == current_user
+      redirect_to dashboard_path, alert: "you do not have permission to view this family tree"
+    end
   end
 end
