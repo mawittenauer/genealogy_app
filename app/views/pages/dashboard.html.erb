@@ -27,19 +27,7 @@
   <div class="col-sm">
     <h2>Your Family Trees</h2>
     <% if @family_trees.any? %>
-      <% @family_trees.each do |tree| %>
-        <div class="card" style="margin-bottom: 10px;">
-          <div class="card-body">
-            <h5 class="card-title"><%= tree.name %></h5>
-            <p class="card-text"><%= tree.description %></p>
-            <%= link_to "View", family_tree_path(tree) %>
-            <%= link_to 'Delete', family_tree_path(tree), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-          <div class="card-footer text-muted">
-            <strong>Member Count:</strong> <%= tree.member_count %>
-          </div>
-        </div>
-      <% end %>
+      <%= render @family_trees %>
     <% else %>
       <p class="subheading">You have not created any family trees yet.</p>
     <% end %>
