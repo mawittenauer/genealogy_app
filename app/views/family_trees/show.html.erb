@@ -17,21 +17,7 @@
   <div class="col-sm">
     <h2>People in This Family Tree</h2>
     <% if @people.any? %>
-      <% @people.each do |person| %>
-        <% if person.persisted? %>
-        <div class="card" style="margin-bottom: 10px;">
-          <div class="card-body">
-            <h5 class="card-title"><%= person.full_name %></h5>
-            <p class="card-text"><%= person.bio %></p>
-            <%= link_to "View", family_tree_person_path(@family_tree, person) %>
-            <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>       
-          </div>
-          <div class="card-footer text-muted">
-            <strong>Born:</strong> <%= person.date_of_birth %>
-          </div>
-        </div>
-        <% end %>
-      <% end %>
+      <%= render @people %>
     <% else %>
       <p>No people have been added to this family tree yet.</p>
     <% end %>

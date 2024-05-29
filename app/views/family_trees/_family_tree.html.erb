@@ -1,0 +1,11 @@
+<div class="card" style="margin-bottom: 10px;">
+  <div class="card-body">
+    <h5 class="card-title"><%= family_tree.name %></h5>
+    <p class="card-text"><%= family_tree.description %></p>
+    <%= link_to "View", family_tree_path(family_tree) %>
+    <%= link_to 'Delete', family_tree_path(family_tree), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <div class="card-footer text-muted">
+    <strong>Member Count:</strong> <%= family_tree.member_count %>
+  </div>
+</div>
