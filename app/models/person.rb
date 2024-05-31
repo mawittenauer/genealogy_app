@@ -41,7 +41,8 @@ class Person < ApplicationRecord
 
   def siblings
     sibling_relationships = Relationship.where("person_one_id IN (?) AND relationship_type = ?", self.parents.map { |p| p.id }, "parent")
-    sibling_relationships.map { |r| r.person_two }
+    sibling_relationships = sibling_relationships.select { |r| r.person_two_id != self.id }
+    sibling_relationships.map { |r| r.person_two }.uniq
   end
 
   def full_name

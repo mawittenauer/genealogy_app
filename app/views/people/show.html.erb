@@ -19,5 +19,7 @@
     <h2>Parents</h2>
     <%= render @person.father if @person.father %>
     <%= render @person.mother if @person.mother %>
+    <h2>Siblings</h2>
+    <%= render @person.siblings if @person.siblings.length > 0 %>
   </div>
 </div>
