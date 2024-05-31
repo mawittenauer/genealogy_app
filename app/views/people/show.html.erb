@@ -16,36 +16,8 @@
     <%= link_to 'Tree', family_tree_person_tree_path(@family_tree, @person) %>
   </div>
   <div class="col-sm">
-    <h2>Relationships</h2>
-    <% if @relationships.any? %>
-      <% @person.relationships_as_person_one.each do |relationship| %>
-        <div class="card" style="margin-bottom: 10px;">
-          <div class="card-body">
-            <h5 class="card-title"><%= relationship.person_two.full_name %></h5>
-            <p class="card-text"><%= relationship.person_two.bio %></p>
-            <%= link_to "View", family_tree_person_path(@family_tree, relationship.person_two) %>
-            <%= link_to 'Delete', relationship_path(relationship), method: :delete, data: { confirm: 'Are you sure you want to delete this relationship?' } %>
-          </div>
-          <div class="card-footer text-muted">
-            <strong>Relationship:</strong> <%= @person.relationship_type_for(relationship) %>
-          </div>
-        </div>
-      <% end %>
-      <% @person.relationships_as_person_two.each do |relationship| %>
-        <div class="card" style="margin-bottom: 10px;">
-          <div class="card-body">
-            <h5 class="card-title"><%= relationship.person_one.full_name %></h5>
-            <p class="card-text"><%= relationship.person_one.bio %></p>
-            <%= link_to "View", family_tree_person_path(@family_tree, relationship.person_one) %>
-            <%= link_to 'Delete', relationship_path(relationship), method: :delete, data: { confirm: 'Are you sure you want to delete this relationship?' } %>
-          </div>
-          <div class="card-footer text-muted">
-            <strong>Relationship:</strong> <%= @person.relationship_type_for(relationship) %>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>This person has no recorded relationships.</p>
-    <% end %>
+    <h2>Parents</h2>
+    <%= render @person.father if @person.father %>
+    <%= render @person.mother if @person.mother %>
   </div>
 </div>
