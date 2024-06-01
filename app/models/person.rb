@@ -21,6 +21,16 @@ class Person < ApplicationRecord
     Relationship.where("person_one_id = ? OR person_two_id = ?", self.id, self.id)
   end
 
+  def spouse
+    spouse_relationship_one = Relationship.where("person_one_id = ? AND relationship_type = ?", self.id, "spouse")
+    spouse_relationship_two = Relationship.where("person_two_id = ? AND relationship_type = ?", self.id, "spouse")
+    if spouse_relationship_one.length > 0
+      spouse_relationship_one.map { |r| r.person_two }[0]
+    else
+      spouse_relationship_two.map { |r| r.person_one }[0]
+    end
+  end
+
   def parents
     parent_relationships = Relationship.where("person_two_id = ? AND relationship_type = ?", self.id, "parent")
     parent_relationships.map { |r| r.person_one }
@@ -41,7 +51,8 @@ class Person < ApplicationRecord
 
   def siblings
     sibling_relationships = Relationship.where("person_one_id IN (?) AND relationship_type = ?", self.parents.map { |p| p.id }, "parent")
-    sibling_relationships.map { |r| r.person_two }
+    sibling_relationships = sibling_relationships.select { |r| r.person_two_id != self.id }
+    sibling_relationships.map { |r| r.person_two }.uniq
   end
 
   def full_name

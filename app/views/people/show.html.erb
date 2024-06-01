@@ -16,8 +16,12 @@
     <%= link_to 'Tree', family_tree_person_tree_path(@family_tree, @person) %>
   </div>
   <div class="col-sm">
+    <h2>Spouse</h2>
+    <%= render @person.spouse if @person.spouse %>
     <h2>Parents</h2>
     <%= render @person.father if @person.father %>
     <%= render @person.mother if @person.mother %>
+    <h2>Siblings</h2>
+    <%= render @person.siblings if @person.siblings.length > 0 %>
   </div>
 </div>
