@@ -17,10 +17,22 @@
   </div>
   <div class="col-sm">
     <h2>Spouse</h2>
-    <%= render @person.spouse if @person.spouse %>
+    <% if @person.spouse %>
+      <%= render @person.spouse %>
+    <% else %>
+      <%= link_to 'Add Spouse', '#', class: 'btn btn-primary' %>
+    <% end %>
     <h2>Parents</h2>
-    <%= render @person.father if @person.father %>
-    <%= render @person.mother if @person.mother %>
+    <% if @person.father %>
+      <%= render @person.father %>
+    <% else %>
+      <%= link_to 'Add Father', '#', class: 'btn btn-primary' %>
+    <% end %>
+    <% if @person.mother %>
+      <%= render @person.mother %>
+    <% else %>
+      <%= link_to 'Add Mother', '#', class: 'btn btn-primary' %>
+    <% end %>
     <h2>Siblings</h2>
     <%= render @person.siblings if @person.siblings.length > 0 %>
   </div>
