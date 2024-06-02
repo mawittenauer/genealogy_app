@@ -44,6 +44,20 @@ class PeopleController < ApplicationController
     @relationship.relationship_type = 'spouse'
   end
 
+  def new_father
+    @people = @family_tree.people
+    @relationship = Relationship.new
+    @relationship.person_two_id = params[:person_id]
+    @relationship.relationship_type = 'parent'
+  end
+
+  def new_mother
+    @people = @family_tree.people
+    @relationship = Relationship.new
+    @relationship.person_two_id = params[:person_id]
+    @relationship.relationship_type = 'mother'
+  end
+
   def update
     if @person.update(person_params)
       redirect_to family_tree_person_path(@family_tree, @person), notice: 'Person was successfully updated.'

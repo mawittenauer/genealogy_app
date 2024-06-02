@@ -26,12 +26,12 @@
     <% if @person.father %>
       <%= render @person.father %>
     <% else %>
-      <%= link_to 'Add Father', '#', class: 'btn btn-primary' %>
+      <%= link_to 'Add Father', family_tree_person_new_father_path(@family_tree, @person), class: 'btn btn-primary' %>
     <% end %>
     <% if @person.mother %>
       <%= render @person.mother %>
     <% else %>
-      <%= link_to 'Add Mother', '#', class: 'btn btn-primary' %>
+      <%= link_to 'Add Mother', family_tree_person_new_mother_path(@family_tree, @person), class: 'btn btn-primary' %>
     <% end %>
     <h2>Siblings</h2>
     <%= render @person.siblings if @person.siblings.length > 0 %>
