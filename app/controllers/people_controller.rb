@@ -37,6 +37,13 @@ class PeopleController < ApplicationController
   def edit
   end
 
+  def new_spouse
+    @people = @family_tree.people
+    @relationship = Relationship.new
+    @relationship.person_one_id = params[:person_id]
+    @relationship.relationship_type = 'spouse'
+  end
+
   def update
     if @person.update(person_params)
       redirect_to family_tree_person_path(@family_tree, @person), notice: 'Person was successfully updated.'

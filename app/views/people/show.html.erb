@@ -20,7 +20,7 @@
     <% if @person.spouse %>
       <%= render @person.spouse %>
     <% else %>
-      <%= link_to 'Add Spouse', '#', class: 'btn btn-primary' %>
+      <%= link_to 'Add Spouse', family_tree_person_new_spouse_path(@family_tree, @person), class: 'btn btn-primary' %>
     <% end %>
     <h2>Parents</h2>
     <% if @person.father %>
