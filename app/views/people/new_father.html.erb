@@ -1,4 +1,12 @@
 <div class="mx-auto">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="<%= dashboard_path %>">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="<%= family_tree_path(@family_tree) %>"><%= @family_tree.name %></a></li>
+      <li class="breadcrumb-item"><a href="<%= family_tree_person_path(@family_tree, @person) %>"><%= @person.full_name %></a></li>
+      <li class="breadcrumb-item active" aria-current="page">New Father</li>
+    </ol>
+  </nav>
   <%= form_with(model: @relationship, url: relationships_path, local: true) do |form| %>
     <h3>Add New Relationship</h3>
     <div class="mb-3">
