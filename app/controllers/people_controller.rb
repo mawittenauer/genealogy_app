@@ -38,6 +38,7 @@ class PeopleController < ApplicationController
   end
 
   def new_spouse
+    @person = @family_tree.people.find(params[:person_id])
     @people = @family_tree.people
     @relationship = Relationship.new
     @relationship.person_one_id = params[:person_id]
@@ -45,6 +46,7 @@ class PeopleController < ApplicationController
   end
 
   def new_father
+    @person = @family_tree.people.find(params[:person_id])
     @people = @family_tree.people
     @relationship = Relationship.new
     @relationship.person_two_id = params[:person_id]
@@ -52,6 +54,7 @@ class PeopleController < ApplicationController
   end
 
   def new_mother
+    @person = @family_tree.people.find(params[:person_id])
     @people = @family_tree.people
     @relationship = Relationship.new
     @relationship.person_two_id = params[:person_id]
