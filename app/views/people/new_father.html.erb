@@ -11,7 +11,7 @@
     <h3>Add New Relationship</h3>
     <div class="mb-3">
       <%= form.label :person_one_id, "This family member", class: "form-label" %>
-      <%= form.collection_select :person_one_id, @people, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
+      <%= form.collection_select :person_one_id, @possible_fathers, :id, :full_name, {include_blank: true}, {class: 'form-control'} %>
     </div>
     <div class="mb-3">
       <%= form.label :relationship_type, "Is the", class: "form-label" %>
