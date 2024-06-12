@@ -23,5 +23,6 @@
     </div>
     <%= form.submit "Create Relationship", class: "btn btn-primary btn-sm" %>
     <%= link_to "Cancel", family_tree_path(@family_tree) %>
+    <p>Click <%= link_to 'here', new_family_tree_person_path(@family_tree) %> to add the father to your family tree</p>
   <% end %>
 </div>
