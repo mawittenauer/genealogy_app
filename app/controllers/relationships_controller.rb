@@ -10,7 +10,8 @@ class RelationshipsController < ApplicationController
   def create
     @relationship = Relationship.new(relationship_params)
     if @relationship.save
-      redirect_back(fallback_location: root_path, notice: 'Relationship was successfully created.')
+      @family_tree = @relationship.person_one.family_tree
+      redirect_to family_tree_path(@family_tree), notice: 'Relationship was successfully created.'
     else
       redirect_back(fallback_location: root_path, alert: 'Error creating relationship.')
     end
