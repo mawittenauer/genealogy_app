@@ -27,7 +27,7 @@ class FamilyTreesController < ApplicationController
   end
 
   def show
-    @people = @family_tree.people
+    @people = @family_tree.people.page(params[:page]).per(5)
     @relationship = Relationship.new
   end
 

@@ -18,6 +18,7 @@
     <h2>People in This Family Tree</h2>
     <% if @people.any? %>
       <%= render @people %>
+      <%= paginate @people %>
     <% else %>
       <p>No people have been added to this family tree yet.</p>
     <% end %>

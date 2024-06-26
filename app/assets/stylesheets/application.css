@@ -67,3 +67,24 @@ li {
 .btn-secondary { background-color: #6C757D; }
 .btn-success { background-color: #28A745; }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination .page-item {
+  margin: 0 5px;
+}
+
+.pagination .page-item a {
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination .page-item a:hover {
+  background-color: #f5f5f5;
+}
+
