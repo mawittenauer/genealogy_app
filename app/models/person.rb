@@ -55,6 +55,24 @@ class Person < ApplicationRecord
     sibling_relationships.map { |r| r.person_two }.uniq
   end
 
+  def tree_data
+    person_mother = self.mother
+    person_father = self.father
+    data = [
+      { id: self.id, mid: self.mother&.id, fid: self.father&.id, name: self.full_name, gender: self.gender, date_of_birth: self.date_of_birth, bio: self.bio }
+    ];
+
+    if person_father
+      data.push({ id: person_father.id, pids: [self.mother&.id], name: person_father.full_name, gender: 'male', date_of_birth: person_father.date_of_birth, bio: person_father.bio })
+    end
+
+    if person_mother
+      data.push({ id: person_mother.id, pids: [self.father&.id], name: person_mother.full_name, gender: 'female', date_of_birth: person_mother.date_of_birth, bio: person_mother.bio })
+    end
+
+    data.to_json()
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
