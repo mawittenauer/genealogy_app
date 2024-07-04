@@ -1,7 +1,7 @@
 <% if person.persisted? %>
   <div class="card" style="margin-bottom: 10px;">
     <div class="card-body">
-      <h5 class="card-title"><%= person.full_name %></h5>
+      <h5 class="card-title"><%= person.full_name %> <%= person.maiden_name && "(#{person.maiden_name})" %></h5>
       <p class="card-text"><%= person.bio %></p>
       <%= link_to "View", family_tree_person_path(@family_tree, person) %>
       <%= link_to 'Delete', family_tree_person_path(@family_tree, person), method: :delete, data: { confirm: 'Are you sure?' } %>       

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_11_125839) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_04_154031) do
   create_table "family_trees", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_11_125839) do
     t.string "birthplace"
     t.text "bio"
     t.string "gender", limit: 1
+    t.string "maiden_name"
     t.index ["family_tree_id"], name: "index_people_on_family_tree_id"
   end
 
