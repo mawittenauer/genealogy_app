@@ -88,3 +88,20 @@ li {
   background-color: #f5f5f5;
 }
 
+svg.tommy .node.male>rect,
+.male>div>.bft-edit-form-header {
+  fill: #2A9D8F;
+}
+
+svg.tommy .node.female>rect {
+  fill: #E76F51;
+}
+
+.male>div>.bft-edit-form-header {
+  background-color: #2A9D8F !important;
+}
+
+.female>div>.bft-edit-form-header {
+  background-color: #E76F51 !important;
+}
+
