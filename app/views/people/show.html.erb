@@ -7,7 +7,7 @@
     </ol>
   </nav>
   <div class="col-sm">
-    <h1><%= @person.full_name %></h1>
+    <h1><%= @person.full_name %> <%= @person.maiden_name && "(#{@person.maiden_name})" %></h1>
     <p><strong>Date of Birth:</strong> <%= @person.date_of_birth %></p>
     <p><strong>Nickname:</strong> <%= @person.nickname %></p>
     <p><strong>Birthplace:</strong> <%= @person.birthplace %></p>

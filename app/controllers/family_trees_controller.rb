@@ -55,7 +55,7 @@ class FamilyTreesController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:first_name, :last_name, :date_of_birth, :bio, :nickname, :birthplace, :gender)
+    params.require(:person).permit(:first_name, :last_name, :maiden_name, :date_of_birth, :bio, :nickname, :birthplace, :gender)
   end
 
   def set_family_tree
