@@ -55,19 +55,29 @@ class Person < ApplicationRecord
     sibling_relationships.map { |r| r.person_two }.uniq
   end
 
+  def formatted_tree_data
+    { id: self.id, mid: self.mother&.id, fid: self.father&.id, name: self.full_name, gender: self.gender, date_of_birth: self.date_of_birth, bio: self.bio }
+  end
+
+  def father_formatted_tree_data
+    { id: self.father&.id, pids: [self.mother&.id], name: self.father&.full_name, gender: 'male', date_of_birth: self.father&.date_of_birth, bio: self.father&.bio }
+  end
+
+  def mother_formatted_tree_data
+    { id: self.mother&.id, pids: [self.father&.id], name: self.mother&.full_name, gender: 'female', date_of_birth: self.mother&.date_of_birth, bio: self.mother&.bio }
+  end
+
   def tree_data
     person_mother = self.mother
     person_father = self.father
-    data = [
-      { id: self.id, mid: self.mother&.id, fid: self.father&.id, name: self.full_name, gender: self.gender, date_of_birth: self.date_of_birth, bio: self.bio }
-    ];
+    data = [self.formatted_tree_data];
 
     if person_father
-      data.push({ id: person_father.id, pids: [self.mother&.id], name: person_father.full_name, gender: 'male', date_of_birth: person_father.date_of_birth, bio: person_father.bio })
+      data.push(self.father_formatted_tree_data)
     end
 
     if person_mother
-      data.push({ id: person_mother.id, pids: [self.father&.id], name: person_mother.full_name, gender: 'female', date_of_birth: person_mother.date_of_birth, bio: person_mother.bio })
+      data.push(self.mother_formatted_tree_data)
     end
 
     data.to_json()
