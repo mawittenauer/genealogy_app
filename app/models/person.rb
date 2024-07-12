@@ -60,16 +60,20 @@ class Person < ApplicationRecord
   end
 
   def father_formatted_tree_data
-    { id: self.father&.id, pids: [self.mother&.id], name: self.father&.full_name, gender: 'male', date_of_birth: self.father&.date_of_birth, bio: self.father&.bio }
+    { id: self.father&.id, pids: [self.mother&.id], mid: self.father&.mother&.id, fid: self.father&.father&.id, name: self.father&.full_name, gender: 'male', date_of_birth: self.father&.date_of_birth, bio: self.father&.bio }
   end
 
   def mother_formatted_tree_data
-    { id: self.mother&.id, pids: [self.father&.id], name: self.mother&.full_name, gender: 'female', date_of_birth: self.mother&.date_of_birth, bio: self.mother&.bio }
+    { id: self.mother&.id, pids: [self.father&.id], mid: self.mother&.mother&.id, fid: self.mother&.father&.id, name: self.mother&.full_name, gender: 'female', date_of_birth: self.mother&.date_of_birth, bio: self.mother&.bio }
   end
 
   def tree_data
     person_mother = self.mother
     person_father = self.father
+    grand_father_one = person_father.father if person_father
+    grand_father_two = person_mother.father if person_mother
+    grand_mother_one = person_father.mother if person_father
+    grand_mother_two = person_mother.mother if person_mother
     data = [self.formatted_tree_data];
 
     if person_father
@@ -78,6 +82,22 @@ class Person < ApplicationRecord
 
     if person_mother
       data.push(self.mother_formatted_tree_data)
+    end
+
+    if grand_father_one
+      data.push(person_father.father_formatted_tree_data)
+    end
+
+    if grand_mother_one
+      data.push(person_father.mother_formatted_tree_data)
+    end
+
+    if grand_father_two
+      data.push(person_mother.father_formatted_tree_data)
+    end
+
+    if grand_mother_two
+      data.push(person_mother.mother_formatted_tree_data)
     end
 
     data.to_json()
